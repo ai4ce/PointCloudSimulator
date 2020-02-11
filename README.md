@@ -1,7 +1,7 @@
 This repository contains code for simulating a sequence of local 2D point clouds that are scanned from a pose trajectory in a virtual 2D environment
 
 # Get Started
-The simulation can be decomposed into three steps that generates
+The simulation can be decomposed into three steps that generate
 * 2D environment
 * Pose trajectory
 * Local point clouds
@@ -11,17 +11,17 @@ To create 2D environment, go to `./code` and run
 ```
 python sample_maps.py --n_env 2 --img_h 1024 --img_w 1024
 ```
-This command simulates 2 different environments and saves them in `../results/` with 3 sub-folders (`v0`, `v1`, and `v2`). In each sub-folder, there is a binary image `environment.png` that visualizes the simluated envrionment where the black pixels show the occupied locations and the white pixels are free-space.
+This command simulates 2 different environments and saves them in `../results/` with 3 sub-folders (`v0` and `v2`). In each sub-folder, there is a binary image `environment.png` that visualizes the simluated envrionment where the black pixels show the occupied locations and the white pixels are free-space.
 
 ## Step 2: Sampling Pose Trajectory
-The pose trajectory is sampled interactively using the matlab script `script_samplePoseTrajectory.m`. You need to specify the environment name that is simulated from step 1 and also provide a name for this pose trajectory (you can sample multiple trajectories within the same environment). 
+The pose trajectory is sampled **interactively** using the matlab script `script_samplePoseTrajectory.m`. You need to specify the environment name that is simulated from step 1 and also provide a name for this pose trajectory (because you can sample multiple trajectories within the same environment). 
 ```matlab
 %% settings
 env_idx = 'v0';
 pose_idx = 'pose0';
 ```
 The sampled pose will be saved as `../results/v0_pose0/gt_pose.mat`. 
-When you run the script, a figure window will be created that displays the binary environment image. You can select a polyline in the current figure using the mouse. This polyline is the base of the trajectory where the poses are sampled. 
+When you run the script, a figure window will be created that displays the binary environment image. You need to select a polyline in the current figure using the mouse. This polyline is the base of the trajectory where the poses are sampled. 
 
 Other parameters you can adjust
 ```matlab
