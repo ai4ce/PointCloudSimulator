@@ -46,7 +46,10 @@ class Maps(object):
         """
         img_np = self.image.numpy().squeeze(0)
         _,thresh = cv.threshold(img_np,0.5,1,cv.THRESH_BINARY_INV)
-        _,contours,_ = cv.findContours(255*thresh.astype(np.uint8),cv.RETR_LIST,cv.CHAIN_APPROX_SIMPLE)
+        if int(cv.__version__[0]) == 4:
+            contours, _ = cv.findContours(255*thresh.astype(np.uint8),cv.RETR_LIST,cv.CHAIN_APPROX_SIMPLE)
+        else:
+            _, contours, _ = cv.findContours(255*thresh.astype(np.uint8),cv.RETR_LIST,cv.CHAIN_APPROX_SIMPLE) 
         line_segs = []
         for contour in contours:
             contour = contour.squeeze(1)
