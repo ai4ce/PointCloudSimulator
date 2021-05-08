@@ -57,6 +57,6 @@ for i in range(n_obs):
     xyz = np.concatenate((xy,zero),axis=-1) # <Lx3>
     pcd = np_to_pcd(xyz) 
     
-    save_name = '{:03d}.pcd'.format(i)
+    save_name = '{:09d}.pcd'.format(i)
     save_name = os.path.join(save_dir,save_name)
     write_point_cloud(save_name,pcd)
